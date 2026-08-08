@@ -13,6 +13,5 @@ export const socials = [
 
 export const nav = [
   { href: "/essays", label: "Essays", short: "Essays" },
-  { href: "/interests", label: "Interests & Philosophy", short: "Interests" },
   { href: "/work", label: "Work & Projects", short: "Work" },
 ] as const;

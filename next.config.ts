@@ -41,7 +41,7 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "img-src 'self' data: https://i.scdn.co https://covers.openlibrary.org https://uploads.mangadex.org https://m.media-amazon.com",
+              "img-src 'self' data:",
               scriptSrc,
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self'",
@@ -54,27 +54,9 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        // The setup pages link out to Spotify; never send them a referrer that
-        // could contain the setup secret, and never let them be cached.
-        source: "/api/spotify/:path*",
-        headers: [
-          { key: "Referrer-Policy", value: "no-referrer" },
-          { key: "Cache-Control", value: "no-store, max-age=0" },
-        ],
-      },
     ];
   },
 
-  images: {
-    // The four cover-art sources used by the Interests page.
-    remotePatterns: [
-      { protocol: "https", hostname: "i.scdn.co", pathname: "/image/**" },
-      { protocol: "https", hostname: "covers.openlibrary.org", pathname: "/b/**" },
-      { protocol: "https", hostname: "uploads.mangadex.org", pathname: "/covers/**" },
-      { protocol: "https", hostname: "m.media-amazon.com", pathname: "/images/**" },
-    ],
-  },
 };
 
 export default nextConfig;
