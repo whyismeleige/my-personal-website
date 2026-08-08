@@ -6,10 +6,10 @@ export const site = {
   locale: "en_IN",
 } as const;
 
-export const socials = [
-  { label: "GitHub", href: "https://github.com/whyismeleige" },
-  { label: "Email", href: `mailto:${site.email}` },
-] as const;
+export const socials = {
+   "GitHub":"https://github.com/whyismeleige" ,
+   "Email" : `mailto:${site.email}` ,
+} as const;
 
 export const nav = [
   { href: "/essays", label: "Essays", short: "Essays" },

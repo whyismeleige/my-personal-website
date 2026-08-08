@@ -11,16 +11,16 @@ export function SiteFooter() {
         </p>
 
         <ul className="flex flex-wrap gap-x-4">
-          {socials.map((social) => {
-            const external = social.href.startsWith("http");
+          {Object.entries(socials).map(([social, href]) => {
+            const external = href.startsWith("http");
             return (
-              <li key={social.label}>
+              <li key={social}>
                 <a
-                  href={social.href}
+                  href={href}
                   target={external ? "_blank" : undefined}
                   rel={external ? "noreferrer noopener" : undefined}
                 >
-                  {social.label}
+                  {social}
                 </a>
               </li>
             );
