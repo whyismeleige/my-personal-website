@@ -2,9 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { cache } from "react";
 import matter from "gray-matter";
-import { remark } from "remark";
-import remarkGfm from "remark-gfm";
-import remarkHtml from "remark-html";
+import { renderEssay } from "./markdown.mjs";
 
 const ESSAYS_DIR = path.join(process.cwd(), "src/content/essays");
 const WORDS_PER_MINUTE = 220;
@@ -90,14 +88,7 @@ export const getEssay = cache(async (slug: string): Promise<Essay | null> => {
   const { meta, body } = parse(filename);
   if (!isVisible(meta)) return null;
 
-  // `sanitize: false` lets raw HTML through from the Markdown. That is safe
-  // here for one reason only: essays are .md files committed to this repo, so
-  // authoring them already requires write access to the source. If essays ever
-  // arrive from anywhere else — an upload, a CMS, a pull request from someone
-  // you do not trust — this becomes stored XSS and must be sanitised.
-  const file = await remark().use(remarkGfm).use(remarkHtml, { sanitize: false }).process(body);
-
-  return { ...meta, html: String(file) };
+  return { ...meta, html: await renderEssay(body, { slug }) };
 });
 
 /** Neighbours in reading order, for the footer of an essay. */
