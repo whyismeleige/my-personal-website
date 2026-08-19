@@ -10,6 +10,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const ESSAYS_DIR = path.join(process.cwd(), "src/content/essays");
+const IMAGES_DIR = path.join(process.cwd(), "public/essays");
 
 function parseArgs(argv) {
   const flags = {};
@@ -117,8 +118,14 @@ Opening paragraph.
 Body.
 `;
 
+const images = path.join(IMAGES_DIR, slug);
+
 fs.mkdirSync(ESSAYS_DIR, { recursive: true });
 fs.writeFileSync(target, template, "utf8");
+// Empty, so git ignores it until it holds something — the point is that the
+// folder is already there when you go looking for somewhere to put an image.
+fs.mkdirSync(images, { recursive: true });
 
 console.log(`Created ${path.relative(process.cwd(), target)}`);
+console.log(`        ${path.relative(process.cwd(), images)}/  — drop images here, refer to them by filename`);
 console.log(`         /essays/${slug}${draft ? "  (draft — dev only)" : ""}`);
