@@ -4,11 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint",
-    "new:essay": "node scripts/new-essay.mjs",
-    "substack": "node scripts/substack.mjs"
+    "lint": "eslint"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

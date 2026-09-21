@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="wrap">
+    <div className="prose-wrap">
       <h1>Not found</h1>
 
       <p className="mt-3">
@@ -12,7 +12,7 @@ export default function NotFound() {
 
       <ul className="mt-5 flex flex-wrap gap-x-4 text-sm">
           <li >
-            <Link href="/essays">Go to Essays</Link>
+            <Link href="/">Go home</Link>
           </li>
       </ul>
     </div>

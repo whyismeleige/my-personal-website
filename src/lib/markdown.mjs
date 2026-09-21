@@ -6,10 +6,7 @@ import remarkHtml from "remark-html";
 import { visit } from "unist-util-visit";
 
 /**
- * The one place Markdown becomes HTML. The site imports this, and so does
- * scripts/substack.mjs — plain .mjs rather than .ts so a bare `node` can run
- * it without a loader. Whatever an essay looks like here, it looks like that
- * everywhere it is published.
+ * The one place Markdown becomes HTML for essays on this site.
  */
 
 const PUBLIC_DIR = path.join(process.cwd(), "public");

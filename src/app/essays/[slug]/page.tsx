@@ -26,10 +26,13 @@ export async function generateMetadata({
       publishedTime: essay.date,
       authors: [site.name],
     },
+    alternates: { canonical: `/essays/${slug}` },
   };
 }
 
-export default async function EssayPage({ params }: PageProps<"/essays/[slug]">) {
+export default async function EssayPage({
+  params,
+}: PageProps<"/essays/[slug]">) {
   const { slug } = await params;
   const essay = await getEssay(slug);
   if (!essay) notFound();
@@ -37,7 +40,7 @@ export default async function EssayPage({ params }: PageProps<"/essays/[slug]">)
   const { previous, next } = getNeighbours(slug);
 
   return (
-    <div className="wrap">
+    <div className="prose-wrap">
       <article>
         <h1 className="text-balance">{essay.title}</h1>
 
@@ -47,11 +50,17 @@ export default async function EssayPage({ params }: PageProps<"/essays/[slug]">)
           {formatDate(essay.date)} · {essay.readingTime} min read
         </p>
 
-        <div className="prose mt-8" dangerouslySetInnerHTML={{ __html: essay.html }} />
+        <div
+          className="prose mt-8"
+          dangerouslySetInnerHTML={{ __html: essay.html }}
+        />
       </article>
 
       {(previous || next) && (
-        <nav aria-label="More essays" className="mt-14 border-t border-rule pt-5 text-sm">
+        <nav
+          aria-label="More essays"
+          className="mt-14 border-t border-rule pt-5 text-sm"
+        >
           <ul className="space-y-1.5">
             {previous && (
               <li>

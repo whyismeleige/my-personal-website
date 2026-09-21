@@ -10,13 +10,9 @@ const isDev = process.env.NODE_ENV === "development";
 const scriptSrc = `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`;
 
 const nextConfig: NextConfig = {
-  /**
-   * There is no home page. `/essays` is the landing page, so the bare domain
-   * sends people there before any rendering happens.
-   */
-  async redirects() {
-    return [{ source: "/", destination: "/essays", permanent: false }];
-  },
+  // Use the compiler API directly. It avoids an extra CLI process during
+  // builds and keeps type checking deterministic in restricted CI runners.
+  experimental: { useTypeScriptCli: false },
 
   async headers() {
     return [

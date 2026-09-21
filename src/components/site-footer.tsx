@@ -2,30 +2,14 @@ import { site, socials } from "@/content/site";
 
 export function SiteFooter() {
   return (
-    <footer className="wrap pt-16 pb-14">
-      <hr className="mb-6 border-0 border-t border-rule" />
-
-      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 text-sm text-muted">
-        <p>
-          © {new Date().getFullYear()} {site.name}
-        </p>
-
-        <ul className="flex flex-wrap gap-x-4">
-          {Object.entries(socials).map(([social, href]) => {
-            const external = href.startsWith("http");
-            return (
-              <li key={social}>
-                <a
-                  href={href}
-                  target={external ? "_blank" : undefined}
-                  rel={external ? "noreferrer noopener" : undefined}
-                >
-                  {social}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+    <footer className="site-wrap pt-20 pb-10 sm:pt-28 sm:pb-12">
+      <div className="grid gap-6 border-t border-rule pt-6 text-sm sm:grid-cols-[1fr_auto] sm:items-end">
+        <div><p className="font-medium">{site.name}</p><p className="text-muted">{site.location}</p></div>
+        <div className="sm:text-right">
+          <ul className="flex flex-wrap gap-x-4 sm:justify-end">
+            {Object.entries(socials).map(([label, href]) => <li key={label}><a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer noopener" : undefined}>{label}</a></li>)}
+          </ul>
+        </div>
       </div>
     </footer>
   );

@@ -7,7 +7,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name}`,
+    default: `${site.name} — Software Developer`,
     template: `%s — ${site.name}`,
   },
   description: site.description,
@@ -17,8 +17,10 @@ export const metadata: Metadata = {
     siteName: site.name,
     description: site.description,
     locale: site.locale,
+    url: site.url,
+    title: `${site.name} — Software Developer`,
   },
-  twitter: { card: "summary" },
+  twitter: { card: "summary", title: `${site.name} — Software Developer`, description: site.description },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

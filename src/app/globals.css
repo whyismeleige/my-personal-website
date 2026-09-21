@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 /*
- * A plain document. One column width everywhere, one typeface — the reader's
- * own, so there is nothing to load — four colours, and no cards, shadows or
- * dark mode.
+ * The original site's plain-document language, extended into a portfolio:
+ * system type, four colours, hairline rules, no cards, shadows or decoration.
  */
 
 :root {
@@ -15,6 +14,7 @@
   /* ~66 characters: a comfortable measure for prose, and wide enough for a
      three-up grid of cover art. */
   --measure: 34rem;
+  --site: 67rem;
 }
 
 @theme inline {
@@ -61,6 +61,7 @@
     font-size: 1rem;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   h1,
@@ -92,6 +93,10 @@
     text-decoration-thickness: 2px;
   }
 
+  a {
+    transition: color 140ms ease, text-decoration-thickness 140ms ease;
+  }
+
   :focus-visible {
     outline: 2px solid var(--fg);
     outline-offset: 2px;
@@ -109,12 +114,85 @@
   }
 }
 
-/* The single column the whole site is built in. Nothing is ever wider. */
+@utility site-wrap {
+  width: 100%;
+  max-width: var(--site);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@utility prose-wrap {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
 @utility wrap {
   width: 100%;
   max-width: var(--measure);
   margin-inline: auto;
   padding-inline: 1.25rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.page-intro {
+  padding-block: clamp(2rem, 7vw, 5rem) clamp(4rem, 10vw, 7.5rem);
+}
+
+.editorial-page {
+  max-width: 43rem;
+  padding-block: clamp(2rem, 7vw, 5rem);
+}
+
+.section-space {
+  margin-top: clamp(6rem, 12vw, 10rem);
+}
+
+.availability-dot {
+  display: inline-block;
+  width: 0.48rem;
+  height: 0.48rem;
+  margin-right: 0.55rem;
+  border-radius: 50%;
+  background: #237a43;
+  vertical-align: 0.04em;
+}
+
+.project-link span {
+  display: inline-block;
+  font-weight: 400;
+  transition: transform 140ms ease;
+}
+
+.project-link:hover span {
+  transform: translate(2px, -2px);
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: 1.1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.contact-row > span:last-child {
+  transition: transform 140ms ease;
+}
+
+.contact-row:hover > span:last-child {
+  transform: translateX(3px);
 }
 
 /* Links that are the whole point of a row — an essay title, a project name. */
