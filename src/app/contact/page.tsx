@@ -2,61 +2,54 @@ import type { Metadata } from "next";
 import { site, socials } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: `Work with ${site.name} on a product, AI system or automation.`,
+  title: "contact",
+  description: `work with ${site.name} on a product, ai system or automation.`,
   alternates: { canonical: "/contact" },
 };
 export default function ContactPage() {
   return (
     <div className="site-wrap">
       <article className="page-intro max-w-[45rem]">
-        <p className="eyebrow">Contact</p>
+        <p className="eyebrow">contact</p>
         <h1 className="mt-4 text-balance text-4xl sm:text-6xl">
-          Let’s build something.
+          let's build together.
         </h1>
         <p className="mt-7 text-lg leading-relaxed">
-          Have a product you want to build, a workflow that should be automated,
-          or an existing system that needs help?
+          let's talk. if our vibes match, let's build together.
         </p>
-        <p className="mt-4 text-lg leading-relaxed text-muted">
-          Send me a message with what you’re working on and what you need. A
-          rough outline is plenty.
-        </p>
+        <p className="mt-4 text-lg leading-relaxed text-muted">hit me up.</p>
         <div className="mt-10 border-t border-rule">
-          <a className="contact-row quiet-link" href={socials.Email}>
+          <a className="contact-row quiet-link" href={socials.email}>
             <span>
-              <span className="block text-sm text-muted">Email</span>
+              <span className="block text-sm text-muted">email</span>
               {site.email}
             </span>
             <span aria-hidden="true">→</span>
           </a>
           <a
             className="contact-row quiet-link"
-            href={socials.GitHub}
+            href={socials.github}
             target="_blank"
             rel="noreferrer noopener"
           >
             <span>
-              <span className="block text-sm text-muted">Elsewhere</span>GitHub
+              <span className="block text-sm text-muted">elsewhere</span>github
             </span>
             <span aria-hidden="true">↗</span>
           </a>
           <a
             className="contact-row quiet-link"
-            href={socials.LinkedIn}
+            href={socials.linkedin}
             target="_blank"
             rel="noreferrer noopener"
           >
             <span>
-              <span className="block text-sm text-muted">Elsewhere</span>LinkedIn
+              <span className="block text-sm text-muted">elsewhere</span>
+              linkedin
             </span>
             <span aria-hidden="true">↗</span>
           </a>
         </div>
-        <p className="mt-8 text-sm text-muted">
-          <span className="availability-dot" aria-hidden="true" />
-          {site.availability}
-        </p>
       </article>
     </div>
   );

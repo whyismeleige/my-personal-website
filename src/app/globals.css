@@ -24,8 +24,8 @@
   --color-rule: var(--rule);
 
   --font-sans:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    "Noto Sans", sans-serif;
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif;
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 }
@@ -62,6 +62,7 @@
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    text-transform: lowercase;
   }
 
   h1,
@@ -94,7 +95,9 @@
   }
 
   a {
-    transition: color 140ms ease, text-decoration-thickness 140ms ease;
+    transition:
+      color 140ms ease,
+      text-decoration-thickness 140ms ease;
   }
 
   :focus-visible {
@@ -141,7 +144,7 @@
   font-weight: 500;
   letter-spacing: 0.09em;
   line-height: 1.4;
-  text-transform: uppercase;
+  text-transform: lowercase;
   color: var(--muted);
 }
 
@@ -156,16 +159,6 @@
 
 .section-space {
   margin-top: clamp(6rem, 12vw, 10rem);
-}
-
-.availability-dot {
-  display: inline-block;
-  width: 0.48rem;
-  height: 0.48rem;
-  margin-right: 0.55rem;
-  border-radius: 50%;
-  background: #237a43;
-  vertical-align: 0.04em;
 }
 
 .project-link span {

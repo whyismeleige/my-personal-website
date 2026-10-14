@@ -14,6 +14,26 @@ const nextConfig: NextConfig = {
   // builds and keeps type checking deterministic in restricted CI runners.
   experimental: { useTypeScriptCli: false },
 
+  async redirects() {
+    return [
+      {
+        source: "/essays",
+        destination: "https://substack.com/@pyushjain",
+        permanent: true,
+      },
+      {
+        source: "/essays/:slug*",
+        destination: "https://substack.com/@pyushjain",
+        permanent: true,
+      },
+      {
+        source: "/work/:slug",
+        destination: "/work",
+        permanent: true,
+      },
+    ];
+  },
+
   async headers() {
     return [
       {

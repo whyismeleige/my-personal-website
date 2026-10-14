@@ -10,7 +10,27 @@ export function SiteHeader() {
         </Link>
         <nav aria-label="Primary">
           <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm sm:gap-x-5">
-            {nav.map((item) => <li key={item.href}><Link href={item.href} className="quiet-link text-muted">{item.label}</Link></li>)}
+            {nav.map((item) => {
+              const external = item.href.startsWith("http");
+              return (
+                <li key={item.href}>
+                  {external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="quiet-link text-muted"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link href={item.href} className="quiet-link text-muted">
+                      {item.label}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </div>

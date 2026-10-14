@@ -7,7 +7,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Software Developer`,
+    default: `${site.name} — software developer`,
     template: `%s — ${site.name}`,
   },
   description: site.description,
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     description: site.description,
     locale: site.locale,
     url: site.url,
-    title: `${site.name} — Software Developer`,
+    title: `${site.name} — software developer`,
   },
-  twitter: { card: "summary", title: `${site.name} — Software Developer`, description: site.description },
+  twitter: { card: "summary", title: `${site.name} — software developer`, description: site.description },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -31,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-fg focus:px-3 focus:py-2 focus:text-bg"
         >
-          Skip to content
+          skip to content
         </a>
         <SiteHeader />
         <main id="main" className="flex-1">
